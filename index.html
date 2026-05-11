@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>My Pentagon Collection</title>
+<title>Pentagon Profile</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -24,10 +24,8 @@
   --success: #4ade80;
   --error: #ff5c7a;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg);
   color: var(--text);
@@ -37,597 +35,591 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
+.container { max-width: 600px; margin: 0 auto; padding: 0 20px; }
+.wide-container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-.container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* ─── Header ─── */
-.hero {
-  text-align: center;
-  padding: 60px 20px 40px;
-  border-bottom: 1px solid var(--border);
-}
-.hero h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.hero h1 .accent { color: var(--gold); }
-.hero .subtitle {
-  color: var(--text-dim);
-  font-size: 1rem;
-  margin-bottom: 24px;
-}
-.hero .powered {
-  font-size: 0.8rem;
-  color: var(--text-faint);
-}
-.hero .powered a {
-  color: var(--purple-bright);
-  text-decoration: none;
-}
-.hero .powered a:hover { text-decoration: underline; }
-
-/* ─── Search ─── */
-.search-bar {
-  display: flex;
-  gap: 10px;
-  max-width: 600px;
-  margin: 0 auto 16px;
-}
+/* Search */
+.search-section { text-align: center; padding: 40px 20px 20px; }
+.search-section h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+.search-section h1 .accent { color: var(--gold); }
+.search-section .sub { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 20px; }
+.search-bar { display: flex; gap: 10px; max-width: 500px; margin: 0 auto; }
 .search-bar input {
-  flex: 1;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 12px 16px;
-  color: var(--text);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 14px;
-  outline: none;
-  transition: border-color 0.2s;
+  flex: 1; background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: 8px; padding: 12px 16px; color: var(--text);
+  font-family: 'JetBrains Mono', monospace; font-size: 13px; outline: none;
 }
 .search-bar input:focus { border-color: var(--gold); }
 .search-bar input::placeholder { color: var(--text-faint); }
 .search-bar button {
-  background: var(--gold);
-  color: var(--bg);
-  border: none;
-  border-radius: 8px;
-  padding: 12px 24px;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background 0.2s;
+  background: var(--gold); color: var(--bg); border: none; border-radius: 8px;
+  padding: 12px 20px; font-weight: 600; font-size: 14px; cursor: pointer;
   white-space: nowrap;
 }
 .search-bar button:hover { background: var(--gold-bright); }
 
-/* ─── Profile Header ─── */
-.profile {
-  display: none;
-  padding: 32px 0;
+/* Profile Card - Linktree style */
+.profile-card {
+  text-align: center; padding: 40px 20px 24px;
   border-bottom: 1px solid var(--border);
 }
-.profile-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
+.avatar {
+  width: 96px; height: 96px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 16px; font-size: 2.5rem; border: 3px solid var(--border-strong);
 }
-.profile-left h2 {
-  font-size: 1.4rem;
-  font-weight: 600;
+.username { font-size: 1.5rem; font-weight: 700; margin-bottom: 4px; }
+.username .verified {
+  display: inline-block; background: var(--success); color: var(--bg);
+  font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 10px;
+  vertical-align: middle; margin-left: 6px;
 }
-.profile-left h2 .addr {
-  font-family: 'JetBrains Mono', monospace;
-  color: var(--purple-bright);
-  font-size: 1.1rem;
+.vip-badge {
+  display: inline-block; background: linear-gradient(135deg, var(--gold), var(--gold-bright));
+  color: var(--bg); font-size: 0.7rem; font-weight: 700; padding: 3px 10px;
+  border-radius: 10px; margin-top: 4px;
 }
-.profile-left .total {
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  margin-top: 4px;
+.wallet-addr {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+  color: var(--text-faint); margin-top: 8px; cursor: pointer;
 }
-.chain-badges {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.chain-badge {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--text-dim);
-  white-space: nowrap;
-}
-.chain-badge .count {
-  color: var(--gold);
-  font-weight: 700;
-}
+.wallet-addr:hover { color: var(--purple-bright); }
+.wallet-addr .copy-hint { font-size: 0.7rem; color: var(--text-faint); opacity: 0; transition: opacity 0.2s; }
+.wallet-addr:hover .copy-hint { opacity: 1; }
 
-/* ─── Filter Bar ─── */
-.filter-bar {
-  display: none;
-  padding: 20px 0;
-  gap: 12px;
-  align-items: center;
-  flex-wrap: wrap;
+/* QR Code */
+.qr-section { text-align: center; margin: 20px auto; }
+.qr-section canvas { border-radius: 12px; border: 2px solid var(--border); }
+.qr-label { font-size: 0.75rem; color: var(--text-faint); margin-top: 8px; }
+
+/* Social Links - Linktree style */
+.social-links { padding: 24px 0; }
+.social-link {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 14px 20px; margin-bottom: 10px; text-decoration: none;
+  color: var(--text); transition: all 0.2s; cursor: pointer;
 }
-.filter-bar label {
-  font-size: 0.85rem;
-  color: var(--text-dim);
-  font-weight: 500;
+.social-link:hover { border-color: var(--gold); transform: translateY(-1px); background: var(--bg-hover); }
+.social-link .icon { font-size: 1.3rem; flex-shrink: 0; width: 28px; text-align: center; }
+.social-link .label { font-weight: 500; font-size: 0.95rem; }
+.social-link .arrow { margin-left: auto; color: var(--text-faint); font-size: 0.9rem; }
+
+/* Chain Stats */
+.chain-stats { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 16px 0; }
+.chain-pill {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px;
+  padding: 6px 14px; font-size: 0.8rem; color: var(--text-dim);
 }
+.chain-pill .count { color: var(--gold); font-weight: 700; }
+
+/* Tabs */
+.tabs {
+  display: flex; border-bottom: 2px solid var(--border);
+  margin-top: 24px; position: sticky; top: 0; background: var(--bg); z-index: 10;
+}
+.tab {
+  flex: 1; text-align: center; padding: 14px; cursor: pointer;
+  font-weight: 600; font-size: 0.9rem; color: var(--text-faint);
+  border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s;
+}
+.tab:hover { color: var(--text-dim); }
+.tab.active { color: var(--gold); border-bottom-color: var(--gold); }
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* Filter bar (NFT tab) */
+.filter-bar { display: flex; padding: 16px 0; gap: 12px; align-items: center; flex-wrap: wrap; }
+.filter-bar label { font-size: 0.85rem; color: var(--text-dim); font-weight: 500; }
 .filter-bar select {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 8px 12px;
-  color: var(--text);
-  font-family: 'Inter Tight', sans-serif;
-  font-size: 14px;
-  outline: none;
-  cursor: pointer;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 6px;
+  padding: 8px 12px; color: var(--text); font-family: 'Inter Tight', sans-serif;
+  font-size: 14px; outline: none; cursor: pointer;
 }
-.filter-bar select:focus { border-color: var(--gold); }
 
-/* ─── States ─── */
-.state-message {
-  text-align: center;
-  padding: 80px 20px;
-  color: var(--text-dim);
+/* Collection Group */
+.collection-group { margin-bottom: 32px; }
+.collection-header {
+  display: flex; align-items: center; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid var(--border); margin-bottom: 12px;
 }
-.state-message .icon { font-size: 3rem; margin-bottom: 16px; }
-.state-message h3 { font-size: 1.2rem; color: var(--text); margin-bottom: 8px; }
-.state-message p { max-width: 400px; margin: 0 auto; }
+.collection-header h3 { font-size: 1rem; font-weight: 600; }
+.collection-header .col-count {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 2px 10px; font-size: 0.75rem; color: var(--text-dim);
+}
+.collection-header .col-chain { margin-left: auto; font-size: 0.75rem; color: var(--text-faint); }
 
+/* NFT Grid */
+.nft-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.nft-card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+  overflow: hidden; transition: transform 0.2s, border-color 0.2s;
+}
+.nft-card:hover { transform: translateY(-3px); border-color: var(--border-strong); }
+.nft-img-wrap {
+  position: relative; width: 100%; aspect-ratio: 1;
+  background: rgba(255,255,255,0.03); display: flex; align-items: center;
+  justify-content: center; overflow: hidden;
+}
+.nft-img-wrap img {
+  width: 100%; height: 100%; object-fit: contain; object-position: center top;
+}
+.nft-img-wrap .no-img { font-size: 3rem; color: var(--text-faint); }
+.nft-info { padding: 10px 12px; }
+.nft-info .name {
+  font-size: 0.85rem; font-weight: 600; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis;
+}
+.nft-info .meta { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; }
+.nft-info .token-id { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-faint); }
+.nft-info .chain-tag {
+  font-size: 0.65rem; font-weight: 600; padding: 2px 7px; border-radius: 10px; text-transform: uppercase;
+}
+.chain-pentagon { background: rgba(212,168,74,0.15); color: var(--gold); }
+.chain-ethereum { background: rgba(98,126,234,0.15); color: #627eea; }
+.chain-polygon { background: rgba(130,71,229,0.15); color: #8247e5; }
+.chain-bsc { background: rgba(243,186,47,0.15); color: #f3ba2f; }
+.chain-oasys { background: rgba(74,222,128,0.15); color: #4ade80; }
+.chain-default { background: rgba(122,107,154,0.15); color: var(--text-faint); }
+
+/* States */
+.state-message { text-align: center; padding: 60px 20px; color: var(--text-dim); }
+.state-message .icon { font-size: 3rem; margin-bottom: 12px; }
+.state-message h3 { font-size: 1.1rem; color: var(--text); margin-bottom: 6px; }
 .spinner {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border: 3px solid var(--border);
-  border-top-color: var(--gold);
-  border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  margin-bottom: 16px;
+  display: inline-block; width: 36px; height: 36px;
+  border: 3px solid var(--border); border-top-color: var(--gold);
+  border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 12px;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* ─── Collection Group ─── */
-.collection-group {
-  margin-bottom: 40px;
-}
-.collection-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 16px;
-}
-.collection-header h3 {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-.collection-header .col-count {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 2px 10px;
-  font-size: 0.75rem;
-  color: var(--text-dim);
-}
-.collection-header .col-chain {
-  margin-left: auto;
-  font-size: 0.75rem;
-  color: var(--text-faint);
-}
-
-/* ─── NFT Grid ─── */
-.nft-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 16px;
-}
-.nft-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.nft-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--border-strong);
-}
-.nft-img-wrap {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  background: rgba(255, 255, 255, 0.03);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.nft-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center top;
-  transition: transform 0.3s;
-}
-.nft-card:hover .nft-img-wrap img {
-  transform: scale(1.05);
-}
-.nft-img-wrap .no-img {
-  font-size: 3rem;
-  color: var(--text-faint);
-}
-.nft-info {
-  padding: 12px 14px;
-}
-.nft-info .name {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--text);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.nft-info .meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 6px;
-}
-.nft-info .token-id {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  color: var(--text-faint);
-}
-.nft-info .chain-tag {
-  font-size: 0.7rem;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 10px;
-  text-transform: uppercase;
-}
-.chain-pentagon { background: rgba(212, 168, 74, 0.15); color: var(--gold); }
-.chain-ethereum { background: rgba(98, 126, 234, 0.15); color: #627eea; }
-.chain-polygon { background: rgba(130, 71, 229, 0.15); color: #8247e5; }
-.chain-bsc { background: rgba(243, 186, 47, 0.15); color: #f3ba2f; }
-.chain-oasys { background: rgba(74, 222, 128, 0.15); color: #4ade80; }
-.chain-default { background: rgba(122, 107, 154, 0.15); color: var(--text-faint); }
-
-/* ─── Footer ─── */
+/* Footer */
 .footer {
-  text-align: center;
-  padding: 40px 20px;
-  color: var(--text-faint);
-  font-size: 0.8rem;
-  border-top: 1px solid var(--border);
-  margin-top: 40px;
+  text-align: center; padding: 32px 20px; color: var(--text-faint);
+  font-size: 0.8rem; border-top: 1px solid var(--border); margin-top: 32px;
 }
 .footer a { color: var(--purple-bright); text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
 
-/* ─── Responsive ─── */
+/* Responsive */
 @media (max-width: 640px) {
-  .hero h1 { font-size: 1.6rem; }
   .search-bar { flex-direction: column; }
   .search-bar button { width: 100%; }
-  .profile-inner { flex-direction: column; align-items: flex-start; }
-  .nft-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; }
+  .nft-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .container { padding: 0 16px; }
 }
+/* Toast */
+.toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+  background: var(--bg-card); border: 1px solid var(--gold); color: var(--text);
+  padding: 10px 20px; border-radius: 8px; font-size: 0.85rem;
+  opacity: 0; transition: opacity 0.3s; pointer-events: none; z-index: 100;
+}
+.toast.show { opacity: 1; }
 </style>
 </head>
 <body>
 
-<!-- Hero -->
-<div class="hero">
-  <h1>My <span class="accent">Pentagon</span> Collection</h1>
-  <p class="subtitle">Browse NFT holdings across every chain — powered by the Pentagon Data API.</p>
+<!-- Search Section -->
+<div class="search-section" id="searchSection">
+  <h1>Pentagon <span class="accent">Profile</span></h1>
+  <p class="sub">Look up any wallet or username — see their identity, socials, and NFT collection.</p>
   <div class="search-bar">
-    <input type="text" id="addressInput" placeholder="Paste a wallet address (0x...)" spellcheck="false" />
-    <button onclick="loadAddress()">Look Up</button>
+    <input type="text" id="addressInput" placeholder="Wallet address (0x...) or username" spellcheck="false" />
+    <button onclick="loadProfile()">Look Up</button>
   </div>
-  <p class="powered">Powered by <a href="https://nft-data.pentagon.games" target="_blank">Pentagon NFT Data API</a> · <a href="https://vip.pentagon.games/mydata" target="_blank">Get your own API key</a></p>
 </div>
 
-<!-- Profile Header -->
-<div class="container">
-  <div class="profile" id="profileSection">
-    <div class="profile-inner">
-      <div class="profile-left">
-        <h2>🖼️ <span class="addr" id="displayAddr"></span></h2>
-        <p class="total" id="totalCount"></p>
+<!-- ======== PROFILE VIEW ======== -->
+<div id="profileView" style="display:none;">
+
+  <!-- Profile Card (Linktree-style) -->
+  <div class="container">
+    <div class="profile-card">
+      <div class="avatar" id="avatarEl">🛡️</div>
+      <div class="username" id="usernameEl">
+        <span id="usernameText"></span>
+        <span class="verified" id="verifiedBadge" style="display:none;">✓ VERIFIED</span>
       </div>
-      <div class="chain-badges" id="chainBadges"></div>
+      <div id="vipBadgeEl" style="display:none;"><span class="vip-badge" id="vipTierText"></span></div>
+      <div class="wallet-addr" id="walletAddr" onclick="copyWallet()" title="Click to copy">
+        <span id="walletText"></span> <span class="copy-hint">📋 copy</span>
+      </div>
+      <div class="chain-stats" id="chainStats"></div>
+      <div class="qr-section" id="qrSection">
+        <canvas id="qrCanvas"></canvas>
+        <div class="qr-label">Scan to send — Pentagon Chain address</div>
+      </div>
+    </div>
+
+    <!-- Social Links (Linktree-style) -->
+    <div class="social-links" id="socialLinks">
+      <!-- Populated by JS based on config -->
     </div>
   </div>
 
-  <!-- Filter Bar -->
-  <div class="filter-bar" id="filterBar">
-    <label for="chainFilter">Filter by chain:</label>
-    <select id="chainFilter" onchange="applyFilter()">
-      <option value="all">All Chains</option>
-    </select>
-    <label for="collectionFilter" style="margin-left:8px;">Collection:</label>
-    <select id="collectionFilter" onchange="applyFilter()">
-      <option value="all">All Collections</option>
-    </select>
-  </div>
+  <!-- Tabs -->
+  <div class="wide-container">
+    <div class="tabs">
+      <div class="tab active" data-tab="profile" onclick="switchTab('profile')">👤 Profile</div>
+      <div class="tab" data-tab="nfts" onclick="switchTab('nfts')">🖼️ NFTs <span id="nftCountBadge"></span></div>
+    </div>
 
-  <!-- Content Area -->
-  <div id="content">
-    <div class="state-message" id="emptyState">
-      <div class="icon">🔍</div>
-      <h3>Enter a wallet address</h3>
-      <p>Paste any Ethereum-compatible wallet address above to see their Pentagon ecosystem NFTs.</p>
+    <!-- Profile Tab Content -->
+    <div class="tab-content active" id="tab-profile">
+      <div class="state-message" style="padding: 40px 20px;">
+        <div class="icon">👆</div>
+        <h3>Social links & identity above</h3>
+        <p>Switch to the NFTs tab to browse this wallet's collection.</p>
+      </div>
+    </div>
+
+    <!-- NFTs Tab Content -->
+    <div class="tab-content" id="tab-nfts">
+      <div class="filter-bar" id="filterBar" style="display:none;">
+        <label for="chainFilter">Chain:</label>
+        <select id="chainFilter" onchange="applyFilter()"><option value="all">All Chains</option></select>
+        <label for="collectionFilter" style="margin-left:8px;">Collection:</label>
+        <select id="collectionFilter" onchange="applyFilter()"><option value="all">All Collections</option></select>
+      </div>
+      <div id="nftContent">
+        <div class="state-message">
+          <div class="icon">🖼️</div>
+          <h3>Loading NFTs...</h3>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
 
 <!-- Footer -->
 <div class="footer">
-  Built with the <a href="https://nft-data.pentagon.games" target="_blank">Pentagon NFT Data API</a> · 
-  <a href="https://github.com/blockchainsuperheroes/pentagon-nft-showcase" target="_blank">Fork this template</a> · 
+  Built with the <a href="https://nft-data.pentagon.games" target="_blank">Pentagon NFT Data API</a> ·
+  <a href="https://vip.pentagon.games/mydata" target="_blank">Get your API key</a> ·
+  <a href="https://github.com/blockchainsuperheroes/pentagon-nft-showcase" target="_blank">Fork this</a> ·
   <a href="https://pentagon.games" target="_blank">pentagon.games</a>
 </div>
 
+<!-- QR Code lib (lightweight, no deps) -->
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.4/build/qrcode.min.js"></script>
 <script>
-// ───────────────────────────────────────
-// Chain config
-// ───────────────────────────────────────
+// ═══════════════════════════════════════
+// CONFIG — customize this section!
+// ═══════════════════════════════════════
+
+// Your social links (edit these!)
+// Set to null or remove entries you don't use
+const SOCIAL_LINKS = [
+  // { icon: '🐦', label: 'Twitter / X', url: 'https://x.com/YOUR_HANDLE' },
+  // { icon: '💬', label: 'Discord', url: 'https://discord.gg/YOUR_INVITE' },
+  // { icon: '📱', label: 'Telegram', url: 'https://t.me/YOUR_GROUP' },
+  // { icon: '🌐', label: 'Website', url: 'https://yoursite.com' },
+  // { icon: '🎮', label: 'Play EtherFantasy', url: 'https://etherfantasy.com' },
+  // { icon: '🔫', label: 'Play Gunnies', url: 'https://gunnies.io' },
+  // { icon: '💎', label: 'Play Gemry', url: 'https://gemry.ai' },
+];
+
+// Default Pentagon Games links (shown when no custom links)
+const DEFAULT_LINKS = [
+  { icon: '🏠', label: 'Pentagon Games', url: 'https://pentagon.games' },
+  { icon: '🐦', label: 'Twitter / X', url: 'https://x.com/pentagongamesxp' },
+  { icon: '💬', label: 'Discord', url: 'https://discord.gg/pentagongamesxp' },
+  { icon: '📱', label: 'Telegram', url: 'https://t.me/pentagongamesxp' },
+  { icon: '🎮', label: 'EtherFantasy', url: 'https://etherfantasy.com' },
+  { icon: '🔫', label: 'Gunnies', url: 'https://gunnies.io' },
+  { icon: '💎', label: 'Gemry', url: 'https://gemry.ai' },
+  { icon: '📊', label: 'CoinGecko', url: 'https://www.coingecko.com/en/coins/pentagon-chain' },
+];
+
+// ═══════════════════════════════════════
+// CHAIN CONFIG
+// ═══════════════════════════════════════
 const CHAINS = {
-  3344:  { name: 'Pentagon', class: 'chain-pentagon' },
-  1:     { name: 'Ethereum', class: 'chain-ethereum' },
-  137:   { name: 'Polygon',  class: 'chain-polygon' },
-  56:    { name: 'BSC',      class: 'chain-bsc' },
-  5555:  { name: 'Oasys',    class: 'chain-oasys' },
+  3344: { name: 'Pentagon', class: 'chain-pentagon' },
+  1:    { name: 'Ethereum', class: 'chain-ethereum' },
+  137:  { name: 'Polygon',  class: 'chain-polygon' },
+  56:   { name: 'BSC',      class: 'chain-bsc' },
+  5555: { name: 'Oasys',    class: 'chain-oasys' },
 };
 
-const API_BASE = 'https://nft-data.pentagon.games/api/v1/nft/owner';
+const NFT_API = 'https://nft-data.pentagon.games/api/v1/nft/owner';
+const VERIFY_API = 'https://verify.pentagon.games/api/user/verify';
 let allNfts = [];
+let currentAddress = '';
 
-// ───────────────────────────────────────
-// Init: check URL params
-// ─────��─────────────────────────────────
+// ═══════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════
 (function init() {
   const params = new URLSearchParams(window.location.search);
   const addr = params.get('address') || params.get('addr') || params.get('wallet');
   if (addr) {
     document.getElementById('addressInput').value = addr;
-    loadAddress();
+    loadProfile();
   }
 })();
 
-// ───────────────────────────────────────
-// Load address
-// ───────────────────────────────────────
-async function loadAddress() {
-  const input = document.getElementById('addressInput');
-  const addr = input.value.trim();
-  if (!addr || !/^0x[a-fA-F0-9]{40}$/.test(addr)) {
-    showError('Invalid address', 'Please enter a valid Ethereum wallet address (0x followed by 40 hex characters).');
+// ═══════════════════════════════════════
+// LOAD PROFILE
+// ═══════════════════════════════════════
+async function loadProfile() {
+  const input = document.getElementById('addressInput').value.trim();
+  if (!input) return;
+
+  let address = input;
+
+  // If not a wallet address, try to resolve via verify API
+  if (!/^0x[a-fA-F0-9]{40}$/.test(input)) {
+    // Could be a username — for now show error (username->address lookup coming)
+    showSearchError('Username lookup coming soon! For now, enter a wallet address (0x...).');
     return;
   }
 
-  // Update URL without reload
+  currentAddress = address;
+
+  // Update URL
   const url = new URL(window.location);
-  url.searchParams.set('address', addr);
+  url.searchParams.set('address', address);
   history.replaceState(null, '', url);
 
-  showLoading();
+  // Show profile view
+  document.getElementById('searchSection').style.display = 'none';
+  document.getElementById('profileView').style.display = 'block';
 
-  try {
-    // Fetch all pages
-    allNfts = [];
-    let page = 1;
-    let hasMore = true;
-    while (hasMore) {
-      const resp = await fetch(`${API_BASE}/${addr}?page=${page}&limit=50`);
-      if (!resp.ok) throw new Error(`API error: ${resp.status}`);
-      const data = await resp.json();
-      if (data.nfts && data.nfts.length > 0) {
-        allNfts = allNfts.concat(data.nfts);
-        hasMore = data.nfts.length === 50;
-        page++;
-      } else {
-        hasMore = false;
-      }
-    }
+  // Load verify data + NFTs in parallel
+  const [verifyData, nftData] = await Promise.allSettled([
+    fetchVerify(address),
+    fetchAllNfts(address)
+  ]);
 
-    // Deduplicate by contractAddress + tokenId + chain
-    const seen = new Set();
-    allNfts = allNfts.filter(n => {
-      const key = `${n.chain}-${n.contractAddress}-${n.tokenId}`;
-      if (seen.has(key)) return false;
-      seen.add(key);
-      return true;
-    });
+  // Render profile card
+  renderProfileCard(address, verifyData.status === 'fulfilled' ? verifyData.value : null);
 
-    if (allNfts.length === 0) {
-      showError('No NFTs found', 'This wallet doesn\'t hold any NFTs tracked by Pentagon\'s indexer.');
-      document.getElementById('profileSection').style.display = 'none';
-      document.getElementById('filterBar').style.display = 'none';
-      return;
-    }
+  // Render social links
+  renderSocialLinks();
 
-    renderProfile(addr, allNfts);
+  // Render QR code
+  renderQR(address);
+
+  // Render NFTs
+  if (nftData.status === 'fulfilled' && nftData.value.length > 0) {
+    allNfts = nftData.value;
+    document.getElementById('nftCountBadge').textContent = `(${allNfts.length})`;
+    renderChainStats(allNfts);
     buildFilters(allNfts);
     renderNfts(allNfts);
-
-  } catch (err) {
-    showError('Failed to load', err.message || 'Something went wrong. Try again in a moment.');
+  } else {
+    allNfts = [];
+    document.getElementById('nftCountBadge').textContent = '(0)';
+    document.getElementById('nftContent').innerHTML = `
+      <div class="state-message">
+        <div class="icon">🖼️</div>
+        <h3>No NFTs found</h3>
+        <p>This wallet doesn't hold any NFTs tracked by Pentagon's indexer.</p>
+      </div>`;
   }
 }
 
-// ───────────────────────────────────────
-// Render profile header
-// ───────────────────────────────────────
-function renderProfile(addr, nfts) {
-  const profile = document.getElementById('profileSection');
-  profile.style.display = 'block';
+// ═══════════════════════════════════════
+// API CALLS
+// ═══════════════════════════════════════
+async function fetchVerify(address) {
+  const resp = await fetch(`${VERIFY_API}?q=${address}`);
+  if (!resp.ok) return null;
+  const data = await resp.json();
+  return data.status ? data.result : null;
+}
 
-  document.getElementById('displayAddr').textContent = addr.slice(0, 6) + '...' + addr.slice(-4);
-  document.getElementById('totalCount').textContent = nfts.length + ' NFT' + (nfts.length !== 1 ? 's' : '') + ' across ' + getUniqueChains(nfts).length + ' chain' + (getUniqueChains(nfts).length !== 1 ? 's' : '');
-
-  // Chain breakdown badges
-  const badges = document.getElementById('chainBadges');
-  badges.innerHTML = '';
-  const chainCounts = {};
-  nfts.forEach(n => {
-    const name = getChainName(n.chain);
-    chainCounts[name] = (chainCounts[name] || 0) + 1;
-  });
-  Object.entries(chainCounts).sort((a, b) => b[1] - a[1]).forEach(([name, count]) => {
-    badges.innerHTML += `<div class="chain-badge">${name}: <span class="count">${count}</span></div>`;
+async function fetchAllNfts(address) {
+  let nfts = [], page = 1, hasMore = true;
+  while (hasMore) {
+    const resp = await fetch(`${NFT_API}/${address}?page=${page}&limit=50`);
+    if (!resp.ok) throw new Error(`API ${resp.status}`);
+    const data = await resp.json();
+    if (data.nfts && data.nfts.length > 0) {
+      nfts = nfts.concat(data.nfts);
+      hasMore = data.nfts.length === 50;
+      page++;
+    } else { hasMore = false; }
+  }
+  // Deduplicate
+  const seen = new Set();
+  return nfts.filter(n => {
+    const key = `${n.chain}-${n.contractAddress}-${n.tokenId}`;
+    if (seen.has(key)) return false;
+    seen.add(key); return true;
   });
 }
 
-// ───────────────────────────────────────
-// Build filter dropdowns
-// ───────────────────────────────────────
-function buildFilters(nfts) {
-  const filterBar = document.getElementById('filterBar');
-  filterBar.style.display = 'flex';
+// ═══════════════════════════════════════
+// RENDER PROFILE CARD
+// ═══════════════════════════════════════
+function renderProfileCard(address, verify) {
+  const short = address.slice(0, 6) + '...' + address.slice(-4);
 
-  // Chain filter
-  const chainSelect = document.getElementById('chainFilter');
-  chainSelect.innerHTML = '<option value="all">All Chains</option>';
-  getUniqueChains(nfts).forEach(chainId => {
-    const opt = document.createElement('option');
-    opt.value = chainId;
-    opt.textContent = getChainName(chainId);
-    chainSelect.appendChild(opt);
+  if (verify && verify.exists && verify.pg_username) {
+    document.getElementById('usernameText').textContent = verify.pg_username;
+  } else {
+    document.getElementById('usernameText').textContent = short;
+  }
+
+  if (verify && verify.verified) {
+    document.getElementById('verifiedBadge').style.display = 'inline-block';
+  }
+
+  if (verify && verify.vip_tier > 0) {
+    document.getElementById('vipBadgeEl').style.display = 'block';
+    document.getElementById('vipTierText').textContent = '⭐ VIP ' + verify.vip_tier;
+  }
+
+  document.getElementById('walletText').textContent = short;
+  document.getElementById('walletAddr').setAttribute('data-full', address);
+}
+
+function renderChainStats(nfts) {
+  const stats = {};
+  nfts.forEach(n => {
+    const name = getChainName(n.chain);
+    stats[name] = (stats[name] || 0) + 1;
   });
+  const el = document.getElementById('chainStats');
+  el.innerHTML = Object.entries(stats).sort((a,b) => b[1]-a[1])
+    .map(([name, count]) => `<div class="chain-pill">${name}: <span class="count">${count}</span></div>`)
+    .join('');
+}
 
-  // Collection filter
-  const colSelect = document.getElementById('collectionFilter');
-  colSelect.innerHTML = '<option value="all">All Collections</option>';
-  const cols = [...new Set(nfts.map(n => n.collection))].sort();
-  cols.forEach(col => {
-    const opt = document.createElement('option');
-    opt.value = col;
-    opt.textContent = col;
-    colSelect.appendChild(opt);
+// ═══════════════════════════════════════
+// SOCIAL LINKS
+// ═══════════════════════════════════════
+function renderSocialLinks() {
+  const links = SOCIAL_LINKS.length > 0 ? SOCIAL_LINKS : DEFAULT_LINKS;
+  const el = document.getElementById('socialLinks');
+  el.innerHTML = links.map(l =>
+    `<a class="social-link" href="${esc(l.url)}" target="_blank" rel="noopener">
+      <span class="icon">${l.icon}</span>
+      <span class="label">${esc(l.label)}</span>
+      <span class="arrow">→</span>
+    </a>`
+  ).join('');
+}
+
+// ═══════════════════════════════════════
+// QR CODE
+// ═══════════════════════════════════════
+function renderQR(address) {
+  const canvas = document.getElementById('qrCanvas');
+  if (typeof QRCode !== 'undefined') {
+    QRCode.toCanvas(canvas, address, {
+      width: 180,
+      margin: 2,
+      color: { dark: '#f5eefc', light: '#1c1333' }
+    });
+  }
+}
+
+// ═══════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════
+function switchTab(tab) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + tab));
+}
+
+// ═══════════════════════════════════════
+// NFT FILTERS + RENDER
+// ═══════════════════════════════════════
+function buildFilters(nfts) {
+  document.getElementById('filterBar').style.display = 'flex';
+  const chainSel = document.getElementById('chainFilter');
+  chainSel.innerHTML = '<option value="all">All Chains</option>';
+  getUniqueChains(nfts).forEach(id => {
+    const o = document.createElement('option'); o.value = id; o.textContent = getChainName(id);
+    chainSel.appendChild(o);
+  });
+  const colSel = document.getElementById('collectionFilter');
+  colSel.innerHTML = '<option value="all">All Collections</option>';
+  [...new Set(nfts.map(n => n.collection))].sort().forEach(col => {
+    const o = document.createElement('option'); o.value = col; o.textContent = col;
+    colSel.appendChild(o);
   });
 }
 
 function applyFilter() {
-  const chainVal = document.getElementById('chainFilter').value;
-  const colVal = document.getElementById('collectionFilter').value;
+  const chain = document.getElementById('chainFilter').value;
+  const col = document.getElementById('collectionFilter').value;
   let filtered = allNfts;
-  if (chainVal !== 'all') filtered = filtered.filter(n => String(n.chain) === chainVal);
-  if (colVal !== 'all') filtered = filtered.filter(n => n.collection === colVal);
+  if (chain !== 'all') filtered = filtered.filter(n => String(n.chain) === chain);
+  if (col !== 'all') filtered = filtered.filter(n => n.collection === col);
   renderNfts(filtered);
 }
 
-// ───────────────────────────────────────
-// Render NFTs grouped by collection
-// ───────────────────────────────────────
 function renderNfts(nfts) {
-  const content = document.getElementById('content');
-
-  // Group by collection
   const groups = {};
   nfts.forEach(n => {
     const key = n.collection || 'Unknown';
     if (!groups[key]) groups[key] = { chain: n.chain, items: [] };
     groups[key].items.push(n);
   });
-
   let html = '';
-  Object.entries(groups).sort((a, b) => b[1].items.length - a[1].items.length).forEach(([name, group]) => {
-    html += `<div class="collection-group">`;
-    html += `<div class="collection-header">
-      <h3>${escapeHtml(name)}</h3>
-      <span class="col-count">${group.items.length}</span>
-      <span class="col-chain">${getChainName(group.chain)}</span>
-    </div>`;
-    html += `<div class="nft-grid">`;
+  Object.entries(groups).sort((a,b) => b[1].items.length - a[1].items.length).forEach(([name, group]) => {
+    html += `<div class="collection-group">
+      <div class="collection-header">
+        <h3>${esc(name)}</h3>
+        <span class="col-count">${group.items.length}</span>
+        <span class="col-chain">${getChainName(group.chain)}</span>
+      </div>
+      <div class="nft-grid">`;
     group.items.forEach(nft => {
-      const chainInfo = CHAINS[nft.chain] || { name: `Chain ${nft.chain}`, class: 'chain-default' };
-      const imgHtml = nft.image
-        ? `<img src="${escapeHtml(nft.image)}" alt="${escapeHtml(nft.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'no-img\\'>🖼️</div>'" />`
-        : `<div class="no-img">🖼️</div>`;
-      html += `
-        <div class="nft-card">
-          <div class="nft-img-wrap">${imgHtml}</div>
-          <div class="nft-info">
-            <div class="name" title="${escapeHtml(nft.name)}">${escapeHtml(nft.name)}</div>
-            <div class="meta">
-              <span class="token-id">#${escapeHtml(String(nft.tokenId))}</span>
-              <span class="chain-tag ${chainInfo.class}">${chainInfo.name}</span>
-            </div>
+      const ci = CHAINS[nft.chain] || { name: `Chain ${nft.chain}`, class: 'chain-default' };
+      const img = nft.image
+        ? `<img src="${esc(nft.image)}" alt="${esc(nft.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.innerHTML='<div class=\\'no-img\\'>🖼️</div>'" />`
+        : '<div class="no-img">🖼️</div>';
+      html += `<div class="nft-card">
+        <div class="nft-img-wrap">${img}</div>
+        <div class="nft-info">
+          <div class="name" title="${esc(nft.name)}">${esc(nft.name)}</div>
+          <div class="meta">
+            <span class="token-id">#${esc(String(nft.tokenId))}</span>
+            <span class="chain-tag ${ci.class}">${ci.name}</span>
           </div>
-        </div>`;
+        </div>
+      </div>`;
     });
-    html += `</div></div>`;
+    html += '</div></div>';
   });
-
-  content.innerHTML = html;
+  document.getElementById('nftContent').innerHTML = html;
 }
 
-// ───────────────────────────────────────
-// State helpers
-// ───────────────────────────────────────
-function showLoading() {
-  document.getElementById('content').innerHTML = `
-    <div class="state-message">
-      <div class="spinner"></div>
-      <h3>Loading NFTs...</h3>
-      <p>Fetching from Pentagon's multi-chain indexer.</p>
-    </div>`;
-  document.getElementById('profileSection').style.display = 'none';
-  document.getElementById('filterBar').style.display = 'none';
-}
-
-function showError(title, msg) {
-  document.getElementById('content').innerHTML = `
-    <div class="state-message">
-      <div class="icon">⚠️</div>
-      <h3>${escapeHtml(title)}</h3>
-      <p>${escapeHtml(msg)}</p>
-    </div>`;
-}
-
-// ───────────────────────────────────────
-// Utilities
-// ───────────────────────────────────────
-function getChainName(chainId) {
-  return (CHAINS[chainId] || {}).name || ('Chain ' + chainId);
-}
-
+// ═══════════════════════════════════════
+// UTILITIES
+// ═══════════════════════════════════════
+function getChainName(id) { return (CHAINS[id] || {}).name || ('Chain ' + id); }
 function getUniqueChains(nfts) {
-  return [...new Set(nfts.map(n => n.chain))].sort((a, b) => {
-    // Pentagon first, then by count
-    if (a === 3344) return -1;
-    if (b === 3344) return 1;
-    return a - b;
-  });
+  return [...new Set(nfts.map(n => n.chain))].sort((a,b) => a === 3344 ? -1 : b === 3344 ? 1 : a - b);
+}
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+function copyWallet() {
+  const addr = document.getElementById('walletAddr').getAttribute('data-full');
+  navigator.clipboard.writeText(addr).then(() => showToast('Address copied!')).catch(() => {});
 }
 
-function escapeHtml(str) {
-  const div = document.createElement('div');
-  div.textContent = str;
-  return div.innerHTML;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-// Enter key on input
-document.getElementById('addressInput').addEventListener('keydown', function(e) {
-  if (e.key === 'Enter') loadAddress();
-});
+function showSearchError(msg) {
+  showToast(msg);
+}
+
+document.getElementById('addressInput').addEventListener('keydown', e => { if (e.key === 'Enter') loadProfile(); });
 </script>
 </body>
 </html>
